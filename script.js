@@ -12,13 +12,12 @@ let startTime;
 let questionText = "";
 
 // Load and display question
-fetch("./texts.json")
+fetch("../texts.json")
   .then((res) => res.json())
-  .then((data) => console.log(data))
-// {
-//   questionText = data[Math.floor(Math.random() * data.length)];
-//   question.innerHTML = questionText;
-// };
+  .then((data) => {
+    questionText = data[Math.floor(Math.random() * data.length)];
+    question.innerHTML = questionText;
+  });
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
@@ -119,6 +118,7 @@ const start = () => {
 
       clearInterval(startCountdown);
       startTime = new Date().getTime();
+
     }
     count--;
   }, 1000);
@@ -133,7 +133,7 @@ displayHistory();
 // Show typing time spent
 setInterval(() => {
   const currentTime = new Date().getTime();
-  const timeSpent = (currentTime - startTime) / 1000;
+  const timeSpent = Math.round((currentTime - startTime) / 1000);
 
 
   document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
