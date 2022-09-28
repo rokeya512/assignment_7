@@ -2,13 +2,16 @@ const histories = document.getElementById("histories");
 
 function addHistory(questionText, timeTaken, errorCount) {
   const newRow = document.createElement("div");
-  newRow.classList.add("card");
+  newRow.classList.add("col");
 
   newRow.innerHTML = `
-  <h3>${questionText}</h3>
-  <div>
-  <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-  <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+  
+  <div class="card h-100">
+  <div class="card-body">
+      <h3 class="card-text">${questionText}</h3><br>
+      <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
+      <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+  </div>
   </div>
   `;
 
@@ -27,12 +30,16 @@ function displayHistory() {
 
   previousTests.forEach((test) => {
     const newRow = document.createElement("div");
-    newRow.classList.add("card");
+    newRow.classList.add("col");
 
     newRow.innerHTML = `
-  <h3>${test.questionText}</h3>
-  <p>You took: <span class="bold">${test.timeTaken}</span> seconds</p>
-    <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
+    <div class="card h-100">
+    <div class="card-body">
+        <h3 class="card-text">${test.questionText}</h3><br>
+        <p>You took: <span class="bold">${test.timeTaken}</span> seconds</p>
+        <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
+    </div>
+    </div>
   `;
 
     histories.appendChild(newRow);
